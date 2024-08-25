@@ -1,0 +1,44 @@
+version: '3.8'
+
+services:
+  # Node.js 应用服务
+  # app:
+  #   image: node:16
+  #   container_name: my-express-app
+  #   working_dir: /usr/src/app
+  #   volumes:
+  #     - .:/usr/src/app
+  #   ports:
+  #     - "3000:3000"
+  #   depends_on:
+  #     - db
+  #   command: ["node", "index.js"]
+
+  # MySQL 数据库服务
+  db:
+    image: mysql:8.0
+    container_name: my-mysql-db
+    environment:
+      MYSQL_ROOT_PASSWORD: example_root_password
+      MYSQL_DATABASE: example_db
+      MYSQL_USER: example_user
+      MYSQL_PASSWORD: example_password
+    ports:
+      - "3306:3306"
+    volumes:
+      - mysql-data:/var/lib/mysql
+  phpmyadmin:
+    image: phpmyadmin/phpmyadmin
+    container_name: my-phpmyadmin
+    environment:
+      PMA_HOST: db
+      PMA_PORT: 3306
+      PMA_USER: example_user
+      PMA_PASSWORD: example_password
+    ports:
+      - "8080:80"
+    depends_on:
+      - db
+
+volumes:
+  mysql-data:
