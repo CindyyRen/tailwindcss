@@ -1,5 +1,6 @@
 const expreses = require('express');
 const mysql = require('mysql2');
+// const db = require('./db/db');
 
 const app = expreses();
 
@@ -26,6 +27,19 @@ app.use(expreses.json());
 app.get('/', (req, res) => {
   res.send('Hello world');
 });
+
+app.get('/jobs', (req, res) => {
+  const sql = 'SELECT * FROM job';
+
+  connection.query(sql, (err, results) => {
+    if (err) {
+      console.error('Error fetching data:', err);
+      return res.status(500).json({ error: 'Failed to fetch data' });
+    }
+    res.json(results);
+  });
+});
+
 app.get('/api/example', (req, res) => {
   res.josn({ message: 'this is an example endopoint ' });
 });
