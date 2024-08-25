@@ -24,7 +24,7 @@ services:
       MYSQL_USER: example_user
       MYSQL_PASSWORD: example_password
     ports:
-      - "3306:3306"
+      - '3306:3306'
     volumes:
       - mysql-data:/var/lib/mysql
   phpmyadmin:
@@ -36,7 +36,7 @@ services:
       PMA_USER: example_user
       PMA_PASSWORD: example_password
     ports:
-      - "8080:80"
+      - '8080:80'
     depends_on:
       - db
 
