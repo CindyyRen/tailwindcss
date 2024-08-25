@@ -1,0 +1,25 @@
+type Query {
+  jobs: JobSubList
+  job(id: Int!): Job
+}
+type Job {
+  id: ID!
+  title: String!
+  description: String
+  location: String!
+  salary: Int!
+  companyId: Int!
+  postedAt: DateTime!
+  company: Company!
+}
+type Company {
+  id: Int!
+  name: String!
+  description: String
+  jobs: [Job!]!
+}
+scalar DateTime
+type JobSubList {
+  items: [Job!]!
+  totalCount: Int!
+}
