@@ -1,11 +1,15 @@
 const mysql = require('mysql2');
 
+// 创建一个 MySQL 连接池
 const pool = mysql.createPool({
   host: 'localhost',
   user: 'example_user',
   password: 'example_password',
   database: 'example_db',
-  connectionLimit: 10 // 设置连接池的最大连接数
+  waitForConnections: true,
+  connectionLimit: 10, // 最大连接数
+  queueLimit: 0
 });
 
-module.exports = pool.promise(); // 使用 promise 版本的连接池
+// 导出连接池的 Promise 版本
+module.exports = pool.promise();
