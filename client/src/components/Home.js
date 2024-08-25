@@ -1,12 +1,12 @@
 import React from 'react';
 import Search from './Search';
-import FeatureImage from './banner/FeatureImage';
+import { JobList } from './job/JobList';
 
 const Home = () => {
   return (
     <div>
       <Search />
-      <FeatureImage/>
+      <JobList />
     </div>
   );
 };

@@ -7,7 +7,7 @@ import { resolvers } from './resolvers.js';
 
 const PORT = 9000;
 const app = express();
-app.use(express.json());
+app.use(cors(), express.json());
 
 const typeDefs = await readFile('./schema.graphql', 'utf8');
 const apolloServer = new ApolloServer({ typeDefs, resolvers });

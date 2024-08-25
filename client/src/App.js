@@ -1,8 +1,9 @@
-// import logo from './logo.svg';
+
 import './App.css';
 import Navbar from './components/Navbar';
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 import { navItems } from './utils/constants';
+
 // import Asia from './components/nav/Asia';
 // import Europe from './components/nav/Europe';
 
