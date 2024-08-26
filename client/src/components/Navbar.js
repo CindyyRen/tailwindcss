@@ -5,7 +5,7 @@ import logo from '../assets/pie-chart-svgrepo-com.svg';
 
 const Navbar = () => {
   return (
-    <nav className="border-b border-b-picton-blue-100 text-picton-blue-800 p-1 sticky top-0">
+    <nav className="border-b bg-gray-50 border-b-picton-blue-100 text-picton-blue-800 p-1 sticky top-0">
       <div className="container mx-auto flex justify-between items-center">
         {/* 左侧 Logo */}
         <div className="flex justify-start items-center">
@@ -30,13 +30,13 @@ const Navbar = () => {
         <div className="space-x-4">
           <Link
             to="/home"
-            className="text-white hover:hover:text-picton-blue-600  font-medium"
+            className="text-picton-blue-800 hover:hover:text-picton-blue-600  font-medium"
           >
             Sign in
           </Link>
           <Link
             to="/robot"
-            className="text-white hover:hover:text-picton-blue-600 font-medium"
+            className="text-picton-blue-800 hover:hover:text-picton-blue-600 font-medium"
           >
             Robot
           </Link>
