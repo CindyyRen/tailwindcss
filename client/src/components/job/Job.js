@@ -3,7 +3,6 @@ import { useQuery } from '@apollo/client';
 import { jobByIdQuery } from '../../lib/graphql/queries';
 
 const Job = ({ id }) => {
-  console.log('JOb', id);
   const jobId = parseInt(id, 10);
   const { loading, error, data } = useQuery(jobByIdQuery, {
     variables: { jobId: jobId },

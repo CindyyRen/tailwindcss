@@ -10,7 +10,7 @@ const Home = () => {
       <Search />
       <div className="container mx-auto  max-w-6xl">
         <div className="grid grid-cols-1 md:grid-cols-2">
-          <JobList setId={setId} />
+          <JobList setId={setId} id={Id}/>
           <div className="hidden md:block">
             <Job id={Id} />
           </div>

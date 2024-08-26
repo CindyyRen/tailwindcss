@@ -6,7 +6,7 @@ import { GET_JOBS } from '../../lib/graphql/queries';
 // 定义 GraphQL 查询
 
 export const JobList = (props) => {
-  const { setId } = props;
+  const {id, setId } = props;
   const { loading, error, data } = useQuery(GET_JOBS);
   useEffect(() => {
     if (data && data.jobs && data.jobs.items && data.jobs.items.length > 0) {
@@ -34,7 +34,7 @@ export const JobList = (props) => {
       {/* <div className="flex flex-wrap -mx-4"> */}
       {items.map((item) => (
         <div key={item.id} className="w-full px-4 mb-4">
-          <JobItem item={item} setId={props.setId} />
+          <JobItem item={item} jobId={id} setId={props.setId} />
         </div>
       ))}
       {/* </div> */}

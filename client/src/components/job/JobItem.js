@@ -7,10 +7,21 @@ import logo from '../../assets/vervio_logo.jpeg';
 //   return description;
 // };
 const JobItem = (props) => {
-  const { item, setId } = props;
-  const { title, location, salary, company, postedAt } = item;
+  const { jobId, item, setId } = props;
+  const { id, title, location, salary, company, postedAt } = item;
+  console.log('jobId', jobId);
+  console.log('id', id);
+  const isActive = jobId === id;
   return (
-    <div className="bg-white border max-w-prose border-gray-200 rounded-lg p-6 shadow-sm mb-4 hover:bg-gray-50 transition-bg duration-200 group">
+    <div
+      onClick={() => {
+        setId(id);
+      }}
+      className={`border max-w-prose border-gray-200 rounded-lg p-6 shadow-sm mb-4 transition-bg duration-200 group
+        ${
+          isActive ? 'bg-blue-50 hover:bg-gray-50' : 'bg-white hover:bg-gray-50'
+        }`}
+    >
       <div className="flex items-start">
         <img src={logo} alt="logo" className="w-16 h-16" />
         <div className="ml-4">
