@@ -5,7 +5,7 @@ import { GET_JOBS } from '../../lib/graphql/queries';
 import Pagination from '../Pagination';
 
 // 定义 GraphQL 查询
-const pageSize = 6; // 每页显示的项目数
+const pageSize = 3; // 每页显示的项目数
 
 export const JobList = (props) => {
   const { id, setId } = props;
@@ -39,7 +39,7 @@ export const JobList = (props) => {
     <div className="px-4 max-w-6xl">
       {/* <div className="flex flex-wrap -mx-4"> */}
       {items.map((item) => (
-        <div key={item.id} className="w-full px-4 mb-4">
+        <div key={item.id} className="w-full px-4 mb-2">
           <JobItem item={item} jobId={id} setId={props.setId} />
         </div>
       ))}
