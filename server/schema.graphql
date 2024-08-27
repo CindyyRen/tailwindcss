@@ -1,5 +1,6 @@
 type Query {
-  jobs: JobSubList
+  jobs(limit: Int, offset: Int): JobSubList
+  # jobs0: JobSubList
   job(id: Int!): Job
   company(id: Int!): Company
 }

@@ -20,7 +20,7 @@ const Search = () => {
   };
 
   return (
-    <div className="w-full px-2 py-2 sm:py-6 lg:py-2 sticky">
+    <div className="w-full px-2 py-2 sticky top-0 sm:py-6 lg:py-2 ">
       <div className="w-full max-w-4xl mx-auto">
         <form className="flex flex-wrap items-center gap-4 bg-white shadow-lg p-2 w-full rounded-lg max-w-5xl mx-auto">
           <div className="relative flex-grow min-w-[200px] md:flex-grow">

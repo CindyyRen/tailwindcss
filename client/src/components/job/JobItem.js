@@ -9,8 +9,6 @@ import logo from '../../assets/vervio_logo.jpeg';
 const JobItem = (props) => {
   const { jobId, item, setId } = props;
   const { id, title, location, salary, company, postedAt } = item;
-  console.log('jobId', jobId);
-  console.log('id', id);
   const isActive = jobId === id;
   return (
     <div

@@ -1,32 +1,33 @@
 import { gql } from '@apollo/client';
-const jobDetailFragment = gql`
-  fragment JobDetail on Job {
-    id
-    location
-    postedAt
-    salary
-    title
-    companyId
-    company {
-      name
-    }
-  }
-`;
+// const jobDetailFragment = gql`
+//   fragment JobDetail on Job {
+//     id
+//     location
+//     postedAt
+//     salary
+//     title
+//     companyId
+//     company {
+//       name
+//     }
+//   }
+// `;
 export const GET_JOBS = gql`
-  query GET_JOBS {
-    jobs {
+  query GetJobs($limit: Int = 10, $offset: Int = 0) {
+    jobs(limit: $limit, offset: $offset) {
       items {
         id
+        title
         description
         location
         postedAt
         salary
-        title
         companyId
         company {
           name
         }
       }
+      totalCount
     }
   }
 `;

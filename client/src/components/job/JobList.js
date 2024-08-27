@@ -1,13 +1,18 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import { useQuery } from '@apollo/client';
 import JobItem from './JobItem';
 import { GET_JOBS } from '../../lib/graphql/queries';
+import Pagination from '../Pagination';
 
 // 定义 GraphQL 查询
+const pageSize = 6; // 每页显示的项目数
 
 export const JobList = (props) => {
-  const {id, setId } = props;
-  const { loading, error, data } = useQuery(GET_JOBS);
+  const { id, setId } = props;
+  const [currentPage, setCurrentPage] = useState(1);
+  const { loading, error, data } = useQuery(GET_JOBS, {
+    variables: { limit: pageSize, offset: pageSize * (currentPage - 1) },
+  });
   useEffect(() => {
     if (data && data.jobs && data.jobs.items && data.jobs.items.length > 0) {
       // console.log("id",data.jobs.items[0].id);
@@ -17,6 +22,7 @@ export const JobList = (props) => {
   if (loading) return <p>Loading...</p>;
   if (error) return <p>Error: {error.message}</p>;
   const items = data?.jobs?.items || [];
+  const totalCount = data?.jobs?.totalCount;
 
   return (
     // 使用grid
@@ -38,6 +44,11 @@ export const JobList = (props) => {
         </div>
       ))}
       {/* </div> */}
+      <Pagination
+        currentPage={currentPage}
+        totalPages={Math.ceil(totalCount / pageSize)}
+        onPageChange={setCurrentPage}
+      />
     </div>
   );
 };

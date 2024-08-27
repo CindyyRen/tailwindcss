@@ -12,12 +12,44 @@ export const resolvers = {
     },
   },
   Query: {
-    jobs: async () => {
-      const items = await prisma.job.findMany();
-      return {
-        items,
-        totalCount: await prisma.job.count(),
-      };
+    // jobs: async (_, { limit, offset }) => {
+    //   const items = await prisma.job.findMany({
+    //     skip: offset,
+    //     take: limit,
+    //   });
+    //   // Count the total number of jobs
+    //   const totalCount = await prisma.job.count();
+    //   return {
+    //     items,
+    //     totalCount,
+    //   };
+    // },
+    // jobs0: async (_, { limit, offset }) => {
+    //   const items = await prisma.job.findMany({});
+    //   // Count the total number of jobs
+    //   const totalCount = await prisma.job.count();
+    //   return {
+    //     items,
+    //     totalCount,
+    //   };
+    // },
+    jobs: async (_, { limit, offset }) => {
+      try {
+        const items = await prisma.job.findMany({
+          // skip: offset || 0,
+          skip: 0,
+          // take: limit || 10,
+          take: 10,
+          include: {
+            company: true,
+          },
+        });
+        const totalCount = await prisma.job.count();
+        return { items, totalCount };
+      } catch (error) {
+        console.error('Error fetching jobs:', error);
+        throw new Error('Failed to fetch jobs');
+      }
     },
     job: (_, { id }) => prisma.job.findUnique({ where: { id } }),
     company: (_, { id }) => prisma.company.findUnique({ where: { id } }),

@@ -1,8 +1,6 @@
 import Home from '../components/Home';
 import Universities from '../components/nav/Universities';
-import Asia from '../components/nav/Asia';
-import Europe from '../components/nav/Europe';
-import Advices from '../components/nav/Advices';
+import Companies from '../components/Companies';
 
 export const navItems = [
   {
@@ -34,9 +32,9 @@ export const navItems = [
   },
   {
     id: 3,
-    title: 'Advices',
-    path: '/advices',
-    element: <Advices />,
+    title: 'Companies',
+    path: '/Companies',
+    element: <Companies />,
     // icon: <HomeIcon />,
   },
 ];
